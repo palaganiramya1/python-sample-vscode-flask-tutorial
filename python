@@ -1,0 +1,19 @@
+pipeline {
+    agent ("LABEL.PY")
+    stages {
+        stage("python") {
+            steps {
+                sh "" pip install pytest pytest-azurepipelines ,
+                      pip install pytest-cov ,
+                      pytest test_test1.pytest
+                   ""   
+            }
+        }
+        stage("python") {
+            steps {
+                git url: "https://github.com/microsoft/python-sample-vscode-flask-tutorial.git", 
+                    branch: "master"
+            }
+        }
+    }
+}
